@@ -18,3 +18,9 @@ debug.log
 
 # Evidence screenshots
 evidence/**/*.png
+
+# macOS
+.DS_Store
+
+# Runtime replay traces
+evidence/replay/run_*.jsonl
