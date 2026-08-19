@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Discovery Studio - Aegis Operator Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#171f33",
+                        "surface-dim": "#0b1326",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-variant": "#2d3449",
+                        "on-primary-fixed": "#07006c",
+                        "on-tertiary-container": "#452000",
+                        "secondary-container": "#0566d9",
+                        "background": "#0b1326",
+                        "primary": "#c0c1ff",
+                        "outline-variant": "#464554",
+                        "on-background": "#dae2fd",
+                        "on-surface": "#dae2fd",
+                        "secondary": "#adc6ff",
+                        "inverse-on-surface": "#283044",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-surface-variant": "#c7c4d7",
+                        "inverse-primary": "#494bd6",
+                        "outline": "#908fa0",
+                        "on-secondary-fixed": "#001a42",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-container": "#e6ecff",
+                        "on-primary": "#1000a9",
+                        "surface": "#0b1326",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-tint": "#c0c1ff",
+                        "surface-container-high": "#222a3d",
+                        "tertiary": "#ffb783",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-bright": "#31394d",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container-lowest": "#060e20",
+                        "on-tertiary-fixed": "#301400",
+                        "inverse-surface": "#dae2fd",
+                        "tertiary-fixed": "#ffdcc5",
+                        "primary-container": "#8083ff",
+                        "on-tertiary": "#4f2500",
+                        "on-error": "#690005",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-low": "#131b2e",
+                        "tertiary-container": "#d97721",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-secondary": "#002e6a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "element-gap": "12px",
+                        "table-row-height": "40px",
+                        "sidebar-width": "260px",
+                        "unit": "4px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "code-table": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "title-sm": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "code-table": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #0b1326; color: #dae2fd; }
+        .ghost-border { border: 1px solid rgba(255,255,255,0.1); }
+        .ai-badge { background-color: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .timeline-line { width: 2px; background-color: #1e293b; position: absolute; left: 3px; top: 12px; bottom: -12px; z-index: 0; }
+        .timeline-node { position: relative; z-index: 1; }
+        .machine-node { width: 8px; height: 8px; border-radius: 50%; background-color: #3b82f6; }
+        .human-node { width: 8px; height: 8px; background-color: #6366f1; }
+        .branch-node { width: 8px; height: 8px; background-color: #f59e0b; transform: rotate(45deg); }
+        
+        /* Simulating states for visual fidelity */
+        #active-discovery { display: none; }
+        #input-section.hidden { display: none; }
+        #active-discovery.visible { display: flex; }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<nav class="w-sidebar-width h-full fixed left-0 top-0 bg-surface-dim bg-surface-container border-r border-outline-variant flex flex-col py-container-padding z-20">
+<div class="px-container-padding mb-8">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center ghost-border overflow-hidden">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Banking AI Admin</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">System Operator</p>
+</div>
+</div>
+</div>
+<div class="px-container-padding mb-6">
+<button class="w-full bg-secondary-container text-on-secondary-container font-body-sm text-body-sm font-bold py-2 rounded ghost-border hover:bg-primary hover:text-on-primary transition-colors duration-200">
+                New Discovery Run
+            </button>
+</div>
+<ul class="flex-1 px-container-padding space-y-1 overflow-y-auto">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-weight="fill">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-primary border-r-2 border-primary bg-surface-variant font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-weight="fill">science</span>
+                    Discovery Studio
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-weight="fill">settings_input_component</span>
+                    Capabilities
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-weight="fill">history</span>
+                    Runs
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-weight="fill">pan_tool</span>
+                    Interventions
+                </a>
+</li>
+</ul>
+<ul class="px-container-padding space-y-1 mt-auto border-t border-outline-variant pt-4">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 ml-sidebar-width flex flex-col h-full bg-background relative">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 h-table-row-height bg-surface-dim bg-surface-dim border-b border-outline-variant flex justify-between items-center w-full px-container-padding z-10 absolute left-0 right-0">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-black text-on-surface">Aegis Operator Console</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 bg-surface-container rounded ghost-border px-2 py-1">
+<div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+<span class="font-label-caps text-label-caps text-blue-400">SYSTEM-CONTROL</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container rounded ghost-border px-2 py-1">
+<div class="w-2 h-2 bg-indigo-500"></div>
+<span class="font-label-caps text-label-caps text-indigo-400">OPERATOR-REQUIRED</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:text-primary transition-opacity duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-primary transition-opacity duration-150">
+<span class="material-symbols-outlined">dns</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant ghost-border overflow-hidden cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant p-1">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 mt-table-row-height p-container-padding overflow-y-auto">
+<div class="max-w-5xl mx-auto space-y-6">
+<!-- Header -->
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Discovery Studio</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Autonomous AI learning of legacy application capabilities.</p>
+</div>
+<!-- Input Section -->
+<div class="bg-surface-container p-6 rounded-lg ghost-border space-y-6" id="input-section">
+<div class="space-y-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant block">Discovery Goal</label>
+<input class="w-full bg-surface-dim text-on-surface font-body-sm text-body-sm px-4 py-3 rounded ghost-border focus:outline-none focus:border-indigo-500 transition-colors placeholder-on-surface-variant/50" id="goal-input" type="text" value="Look up member M-10428 and return their current savings balance."/>
+</div>
+<div class="space-y-2 w-1/3">
+<label class="font-label-caps text-label-caps text-on-surface-variant block">Target Application</label>
+<select class="w-full bg-surface-dim text-on-surface font-body-sm text-body-sm px-4 py-3 rounded ghost-border focus:outline-none focus:border-indigo-500 appearance-none">
+<option value="northstar">Northstar Core</option>
+<option value="legacy-crm">Legacy CRM</option>
+<option value="mainframe">Mainframe T-800</option>
+</select>
+</div>
+<div class="pt-4 flex justify-end">
+<button class="bg-indigo-500 text-white font-body-sm text-body-sm font-bold py-2 px-6 rounded ghost-border hover:bg-indigo-400 transition-colors flex items-center gap-2" id="start-btn">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+                            Start Discovery
+                        </button>
+</div>
+</div>
+<!-- Active Discovery View (Initially Hidden) -->
+<div class="flex-col gap-6" id="active-discovery">
+<!-- Status Header -->
+<div class="flex items-center justify-between bg-surface-container p-4 rounded-lg ghost-border">
+<div class="flex items-center gap-4">
+<div class="font-code-table text-code-table text-on-surface">ID: RUN-8f92-k2</div>
+<div class="ai-badge px-2 py-1 rounded font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                                AI DISCOVERY
+                            </div>
+</div>
+<div class="font-code-table text-code-table text-on-surface-variant text-right">
+<span class="block">LLM: OpenAI GPT-4o</span>
+<span class="block">Orchestration: LangGraph</span>
+<span class="block text-emerald-400">Policy Engine: Enforced</span>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-6">
+<!-- Timeline -->
+<div class="col-span-8 bg-surface-container p-6 rounded-lg ghost-border">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-6 border-b border-outline-variant pb-2">Execution Timeline</h3>
+<div class="space-y-4 pl-2">
+<!-- Node 1 -->
+<div class="relative pl-6 pb-4">
+<div class="timeline-line"></div>
+<div class="absolute left-0 top-1.5 timeline-node machine-node shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-body-sm text-body-sm font-bold text-on-surface">Observe</div>
+<div class="font-code-table text-code-table text-on-surface-variant mt-1">Screen State Captured</div>
+</div>
+<div class="text-right">
+<span class="font-code-table text-code-table text-on-surface-variant">0s</span>
+<span class="block font-label-caps text-label-caps text-emerald-400 mt-1">COMPLETED</span>
+</div>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="relative pl-6 pb-4">
+<div class="timeline-line"></div>
+<div class="absolute left-0 top-1.5 timeline-node branch-node shadow-[0_0_8px_rgba(245,158,11,0.5)]"></div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-body-sm text-body-sm font-bold text-on-surface">Explorer Decision</div>
+<div class="font-code-table text-code-table text-on-surface-variant mt-1">Action: CLICK 'Member Search'</div>
+</div>
+<div class="text-right">
+<span class="font-code-table text-code-table text-on-surface-variant">2s</span>
+<span class="block font-label-caps text-label-caps text-emerald-400 mt-1">COMPLETED</span>
+</div>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="relative pl-6 pb-4">
+<div class="timeline-line"></div>
+<div class="absolute left-0 top-1.5 timeline-node machine-node shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-body-sm text-body-sm font-bold text-on-surface">Policy Check</div>
+<div class="font-code-table text-code-table text-on-surface-variant mt-1">Type: READ_ONLY</div>
+</div>
+<div class="text-right">
+<span class="font-code-table text-code-table text-on-surface-variant">4s</span>
+<span class="block font-label-caps text-label-caps text-emerald-400 mt-1">ALLOW</span>
+</div>
+</div>
+</div>
+<!-- Node 4 -->
+<div class="relative pl-6 pb-4">
+<div class="timeline-line"></div>
+<div class="absolute left-0 top-1.5 timeline-node machine-node shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-body-sm text-body-sm font-bold text-on-surface">Browser Action</div>
+<div class="font-code-table text-code-table text-on-surface-variant mt-1">Enter Member ID 'M-10428'</div>
+</div>
+<div class="text-right">
+<span class="font-code-table text-code-table text-on-surface-variant">6s</span>
+<span class="block font-label-caps text-label-caps text-emerald-400 mt-1">COMPLETED</span>
+</div>
+</div>
+</div>
+<!-- Node 5 -->
+<div class="relative pl-6 pb-4">
+<div class="timeline-line"></div>
+<div class="absolute left-0 top-1.5 timeline-node machine-node shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-body-sm text-body-sm font-bold text-on-surface">Checkpoint</div>
+<div class="font-code-table text-code-table text-on-surface-variant mt-1">Validated 'Member Detail' visible</div>
+</div>
+<div class="text-right">
+<span class="font-code-table text-code-table text-on-surface-variant">8s</span>
+<span class="block font-label-caps text-label-caps text-emerald-400 mt-1">COMPLETED</span>
+</div>
+</div>
+</div>
+<!-- Node 6 (In Progress) -->
+<div class="relative pl-6">
+<div class="absolute left-[2px] top-1.5 timeline-node machine-node animate-pulse shadow-[0_0_12px_rgba(59,130,246,0.8)]"></div>
+<div class="flex justify-between items-start">
+<div>
+<div class="font-body-sm text-body-sm font-bold text-on-surface text-blue-400">Compile Artifact</div>
+<div class="font-code-table text-code-table text-on-surface-variant mt-1">Generating YAML...</div>
+</div>
+<div class="text-right">
+<span class="font-code-table text-code-table text-on-surface-variant">10s</span>
+<span class="block font-label-caps text-label-caps text-blue-400 mt-1 animate-pulse">IN_PROGRESS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Result Box -->
+<div class="col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container p-6 rounded-lg ghost-border flex-1 border-t-2 border-t-emerald-500 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[64px]">check_circle</span>
+</div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4">Discovery Result</h3>
+<div class="space-y-4 relative z-10">
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-1">Outcome</span>
+<div class="font-body-md text-body-md text-on-surface bg-surface-dim p-2 rounded ghost-border">
+                                            Savings Balance extracted <span class="font-code-table text-emerald-400">($4,283.42)</span>
+</div>
+</div>
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-1">Capability Generated</span>
+<div class="font-code-table text-code-table text-blue-400 bg-surface-dim p-2 rounded ghost-border overflow-x-auto">
+                                            member.get_savings_balance
+                                        </div>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-outline-variant">
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-1">Critic Review</span>
+<span class="font-body-sm text-body-sm font-bold text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">done_all</span> Approved
+                                            </span>
+</div>
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-1">Validation</span>
+<span class="font-body-sm text-body-sm font-bold text-emerald-400 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Passed
+                                            </span>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<button class="w-full bg-surface-variant text-on-surface font-body-sm text-body-sm font-bold py-2 rounded ghost-border hover:bg-surface-container-high transition-colors">
+                                        View Capability YAML
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        document.getElementById('start-btn').addEventListener('click', function() {
+            document.getElementById('input-section').classList.add('opacity-50', 'pointer-events-none');
+            this.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span> Starting...';
+            
+            setTimeout(() => {
+                document.getElementById('input-section').classList.add('hidden');
+                document.getElementById('active-discovery').classList.add('visible');
+            }, 800);
+        });
+    </script>
+</body></html>

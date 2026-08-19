@@ -1,0 +1,142 @@
+schema_version: '1.0'
+capability_id: member.get_savings_balance
+name: Get Member Savings Balance
+version: 1.0.0
+description: Look up member profile in Northstar Core portal and extract current savings account balance.
+target_application: Northstar Core
+provenance:
+  source: BOOTSTRAP
+compatibility:
+  vendor: Northstar Banking
+  product: Northstar Core Banking Portal
+  product_version: 4.x
+  surface_type: web
+inputs:
+  member_id:
+    type: string
+    required: true
+    description: Primary member identifier in format M-XXXXX
+    sensitive: false
+    validation_pattern: ^M-\d{5}$
+outputs:
+  savings_balance:
+    type: string
+    description: Current savings balance formatted as currency
+    required: true
+    format: currency
+safety:
+  risk_level: LOW
+  read_only: true
+  human_approval_required: false
+known_outcomes:
+  - code: MEMBER_NOT_FOUND
+    description: Target member ID does not exist in member registry
+    category: BUSINESS_OUTCOME
+    checkpoint:
+      type: TEXT_VISIBLE
+      expected: Member Not Found
+      outcome_code: MEMBER_NOT_FOUND
+  - code: PERMISSION_DENIED
+    description: Operator lacks supervisory clearance to view target member
+    category: BUSINESS_OUTCOME
+    checkpoint:
+      type: TEXT_VISIBLE
+      expected: Access Denied
+      outcome_code: PERMISSION_DENIED
+  - code: MANUAL_VERIFICATION
+    description: Member profile is flagged for secondary identity verification
+    category: HUMAN_REQUIRED
+    checkpoint:
+      type: TEXT_VISIBLE
+      expected: Additional Verification Required
+      outcome_code: MANUAL_VERIFICATION
+steps:
+  - step_id: navigate_to_member_search
+    description: Navigate to the Member Search page in Northstar Core
+    action:
+      action_type: navigate
+      target_url: http://127.0.0.1:8000/members/search
+    checkpoint:
+      type: URL_CONTAINS
+      expected: /members/search
+    risk_level: LOW
+    optional: false
+  - step_id: enter_member_id
+    description: Fill the Member ID input field with the target member identifier
+    action:
+      action_type: fill
+      value_from_input: member_id
+      locator:
+        role: textbox
+        accessible_name: Member ID
+        label: Member ID
+        css: '#member_id'
+        stable_attributes:
+          id: member_id
+          name: member_id
+    risk_level: LOW
+    optional: false
+  - step_id: submit_member_search
+    description: Click the Search button to query the member registry
+    action:
+      action_type: click
+      locator:
+        role: button
+        accessible_name: Search
+        text: Search
+        css: '#search_button'
+        stable_attributes:
+          id: search_button
+    checkpoint:
+      type: ONE_OF
+      description: Recognize member detail or known business/interception outcomes
+      branches:
+        - type: TEXT_VISIBLE
+          expected: Member Record Overview
+          outcome_code: SUCCESS
+        - type: TEXT_VISIBLE
+          expected: Member Not Found
+          outcome_code: MEMBER_NOT_FOUND
+        - type: TEXT_VISIBLE
+          expected: Access Denied
+          outcome_code: PERMISSION_DENIED
+        - type: TEXT_VISIBLE
+          expected: Additional Verification Required
+          outcome_code: MANUAL_VERIFICATION
+    risk_level: LOW
+    optional: false
+  - step_id: click_view_savings
+    description: Click the View Savings action button to open Savings Account Detail
+    action:
+      action_type: click
+      locator:
+        role: link
+        accessible_name: View Savings
+        text: View Savings
+        css: '#btn_view_savings'
+        stable_attributes:
+          id: btn_view_savings
+    checkpoint:
+      type: URL_CONTAINS
+      expected: /accounts/savings
+    risk_level: LOW
+    optional: false
+  - step_id: extract_savings_balance
+    description: Read and extract the current savings balance from the balance card
+    action:
+      action_type: extract
+      extract_key: savings_balance
+      locator:
+        css: '#current_savings_balance'
+        text: $
+        xpath: //div[@id='current_savings_balance']
+        stable_attributes:
+          id: current_savings_balance
+    checkpoint:
+      type: OUTPUT_PRESENT
+      expected: savings_balance
+    risk_level: LOW
+    optional: false
+success_condition:
+  type: OUTPUT_PRESENT
+  expected: savings_balance

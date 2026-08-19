@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Human Intervention - Active Takeover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#0b1326",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "surface-container": "#171f33",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "error": "#ffb4ab",
+                        "on-surface-variant": "#c7c4d7",
+                        "secondary-container": "#0566d9",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "outline": "#908fa0",
+                        "outline-variant": "#464554",
+                        "secondary": "#adc6ff",
+                        "background": "#0b1326",
+                        "primary": "#c0c1ff",
+                        "on-surface": "#dae2fd",
+                        "primary-container": "#8083ff",
+                        "tertiary": "#ffb783",
+                        "on-tertiary-container": "#452000",
+                        "surface-variant": "#2d3449",
+                        "inverse-primary": "#494bd6",
+                        "on-error": "#690005",
+                        "on-primary-container": "#0d0096",
+                        "error-container": "#93000a",
+                        "surface-bright": "#31394d",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-primary-fixed": "#07006c",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-container-lowest": "#060e20",
+                        "on-primary": "#1000a9",
+                        "on-secondary-fixed-variant": "#004395",
+                        "inverse-on-surface": "#283044",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-secondary-fixed": "#001a42",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-container": "#e6ecff",
+                        "surface-tint": "#c0c1ff",
+                        "on-secondary": "#002e6a",
+                        "on-tertiary": "#4f2500",
+                        "surface-container-high": "#222a3d",
+                        "on-background": "#dae2fd",
+                        "on-tertiary-fixed": "#301400",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-dim": "#0b1326",
+                        "tertiary-container": "#d97721"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "260px",
+                        "container-padding": "24px",
+                        "element-gap": "12px",
+                        "unit": "4px",
+                        "table-row-height": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "code-table": ["JetBrains Mono"],
+                        "title-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "code-table": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "title-sm": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+                        "display-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface h-screen overflow-hidden flex font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Sidebar Navigation -->
+<nav class="w-sidebar-width h-full fixed left-0 top-0 bg-surface-dim bg-surface-container border-r border-outline-variant flex flex-col h-screen py-container-padding z-20">
+<div class="px-container-padding mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary mb-1">Banking AI Admin</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">System Operator</p>
+</div>
+<button class="mx-container-padding mb-8 bg-primary-container hover:bg-primary text-on-primary-container font-body-sm font-bold py-2 px-4 rounded-DEFAULT transition-colors duration-200 ease-in-out flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+            New Discovery Run
+        </button>
+<div class="flex-1 overflow-y-auto scrollbar-hide flex flex-col gap-1 px-4">
+<!-- Navigation Items -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-title-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">science</span>
+<span class="font-title-sm">Discovery Studio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-title-sm">Capabilities</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-title-sm">Runs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-primary border-r-2 border-primary bg-surface-variant transition-colors duration-200 ease-in-out relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-1 before:h-2/3 before:bg-primary before:rounded-r-full" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pan_tool</span>
+<span class="font-title-sm font-medium">Interventions</span>
+</a>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-title-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-title-sm">Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-sidebar-width flex-1 flex flex-col h-full bg-background overflow-hidden relative">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-container-padding docked full-width top-0 h-table-row-height bg-surface-dim bg-surface-dim border-b border-outline-variant z-10 flex-shrink-0 sticky top-0 backdrop-blur-sm bg-opacity-90">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-black text-on-surface">Aegis Operator Console</h2>
+</div>
+<div class="flex items-center gap-6">
+<!-- Control Ownership Indicator -->
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container border border-outline-variant rounded-DEFAULT">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+</span>
+<span class="font-label-caps text-label-caps text-on-surface">OPERATOR-REQUIRED</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant">
+<button class="hover:text-primary transition-opacity duration-150">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="hover:text-primary transition-opacity duration-150">
+<span class="material-symbols-outlined">dns</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden flex-shrink-0">
+<img alt="Operator Avatar" class="w-full h-full object-cover" data-alt="A futuristic UI avatar representing a system operator in a cyberpunk aesthetic. Minimalist, high contrast, glowing cyan lines on a dark obsidian background, professional, clean corporate cyberpunk style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi4nP_wz_SGUeSYg-7DxOi5Ks2g7d1ROmHHSK7QJhA2n5HQEFnBvkec3ysZ5nMzxXtdBCA3EWqBw__HqbHbOq-tPUpH8XlHgTEDwm4yo_4YcD5yt9_BCPTWqWErot-9qiOAqPtP8t68NgOXpTIKq_JVGRqu0hfWJN4gmRFvY9iPMCRydSHtxQaYZgvXiQio1LeCdE-F9JgY6dfVo8v9JjNvEa0j3pwBnM3848TtUHp7Gs_SvAVxPm_QA"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-container-padding space-y-element-gap">
+<!-- Breadcrumbs & Page Title -->
+<div class="mb-6">
+<div class="flex items-center text-on-surface-variant font-label-caps text-label-caps gap-2 mb-2">
+<span>Interventions</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface font-bold">run_c19e8</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Human Intervention</h1>
+</div>
+<!-- Intervention Alert Panel (High Visibility) -->
+<section class="bg-surface-container border-l-4 border-amber-500 border border-outline-variant rounded-DEFAULT p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-amber-500">warning</span>
+</div>
+<div class="flex items-start justify-between relative z-10">
+<div class="space-y-4 max-w-3xl">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center justify-center bg-amber-500/10 border border-amber-500/30 text-amber-500 font-label-caps text-label-caps px-2 py-1 rounded-sm gap-1">
+<span class="material-symbols-outlined text-[12px]">pan_tool</span>
+                                HUMAN REQUIRED
+                            </span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Additional Verification Required</h3>
+</div>
+<div class="grid grid-cols-3 gap-6 bg-surface-container-low p-4 rounded-sm border border-[rgba(255,255,255,0.05)]">
+<div>
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">RUN ID</p>
+<p class="font-code-table text-code-table text-on-surface">run_c19e8</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">CAPABILITY</p>
+<p class="font-code-table text-code-table text-on-surface">member.get_savings_balance</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">CURRENT STEP</p>
+<p class="font-code-table text-code-table text-on-surface">04 Validate Member State</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-sm mt-4 p-3 bg-surface-container-highest rounded-sm border border-outline-variant/30">
+<div class="flex-1">
+<span class="text-on-surface-variant font-label-caps text-label-caps block mb-1">EXPECTED STATE</span>
+<span class="font-code-table text-emerald-400">"Member Detail"</span>
+</div>
+<div class="w-px h-8 bg-outline-variant/50"></div>
+<div class="flex-1">
+<span class="text-on-surface-variant font-label-caps text-label-caps block mb-1">OBSERVED STATE</span>
+<span class="font-code-table text-amber-400">"Additional Verification Required (MFA)"</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="inline-flex items-center justify-center bg-slate-800 border border-slate-600 text-on-surface font-label-caps text-label-caps px-3 py-1 rounded-sm gap-1">
+<span class="material-symbols-outlined text-[12px] animate-pulse text-amber-400">pause_circle</span>
+                            STATUS: PAUSED
+                        </span>
+</div>
+</div>
+</section>
+<!-- Control Ownership Workflow Strip -->
+<section class="bg-surface-container border border-[rgba(255,255,255,0.1)] rounded-DEFAULT p-4 flex items-center justify-between">
+<!-- State 1 -->
+<div class="flex items-center gap-3 opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">smart_toy</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">AUTOMATION</span>
+</div>
+<div class="h-px bg-outline-variant flex-1 mx-4"></div>
+<!-- State 2 (Active) -->
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500 flex items-center justify-center relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-20"></span>
+<span class="material-symbols-outlined text-[16px] text-amber-500">pause</span>
+</div>
+<span class="font-label-caps text-label-caps text-amber-500 font-bold">PAUSED</span>
+</div>
+<div class="h-px bg-outline-variant flex-1 mx-4"></div>
+<!-- State 3 -->
+<div class="flex items-center gap-3 opacity-80">
+<div class="w-8 h-8 rounded-full bg-indigo-900 border border-indigo-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-indigo-300">person</span>
+</div>
+<span class="font-label-caps text-label-caps text-indigo-300">HUMAN</span>
+</div>
+<div class="h-px bg-outline-variant border-dashed flex-1 mx-4"></div>
+<!-- State 4 -->
+<div class="flex items-center gap-3 opacity-40">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">sync</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">RESUMING</span>
+</div>
+<div class="h-px bg-outline-variant border-dashed flex-1 mx-4"></div>
+<!-- State 5 -->
+<div class="flex items-center gap-3 opacity-40">
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">smart_toy</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">AUTOMATION</span>
+</div>
+</section>
+<!-- Main Interactive Area: Bento Layout -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-element-gap">
+<!-- Action Panel (Left/Main) - State 2 (Manual Control Active) -->
+<section class="xl:col-span-1 bg-surface-container border border-[rgba(255,255,255,0.1)] rounded-DEFAULT p-6 flex flex-col justify-between h-[500px]">
+<div>
+<div class="flex items-center justify-between mb-6 border-b border-outline-variant/30 pb-4">
+<h3 class="font-title-sm text-title-sm font-semibold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-indigo-400">admin_panel_settings</span>
+                                MANUAL CONTROL ACTIVE
+                            </h3>
+<span class="inline-flex items-center justify-center bg-indigo-900/50 border border-indigo-500/50 text-indigo-300 font-label-caps text-label-caps px-2 py-1 rounded-sm">
+                                OWNER: HUMAN
+                            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-6">
+                            Automation is paused while the operator completes verification in the existing browser session. Please interact directly with the legacy interface to clear the MFA challenge.
+                        </p>
+<div class="bg-surface-container-low border border-[rgba(255,255,255,0.05)] p-4 rounded-sm mb-6">
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-2">TARGET CHECKPOINT</h4>
+<div class="flex items-center gap-2 text-emerald-400 font-code-table bg-emerald-900/10 p-2 rounded-sm border border-emerald-900/30">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+                                "Member Detail visible"
+                            </div>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-body-sm font-bold py-3 px-4 rounded-sm transition-colors duration-200 border border-indigo-400 flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(79,70,229,0.2)]">
+<span class="material-symbols-outlined">play_arrow</span>
+                            Resume Automation
+                        </button>
+<button class="w-full bg-transparent hover:bg-surface-variant text-on-surface-variant font-body-sm font-medium py-3 px-4 rounded-sm transition-colors duration-200 border border-outline-variant flex items-center justify-center gap-2">
+                            Abort Run
+                        </button>
+</div>
+</section>
+<!-- Evidence Preview (Right) -->
+<section class="xl:col-span-2 bg-slate-900 border border-[rgba(255,255,255,0.1)] rounded-DEFAULT overflow-hidden flex flex-col h-[500px]">
+<div class="bg-surface-container-high px-4 py-2 border-b border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px]">desktop_windows</span>
+                            LIVE BROWSER SESSION: NORTHSTAR CORE
+                        </span>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-red-500/50"></div>
+<div class="w-2 h-2 rounded-full bg-amber-500/50"></div>
+<div class="w-2 h-2 rounded-full bg-green-500/50"></div>
+</div>
+</div>
+<div class="flex-1 relative bg-black p-4 flex items-center justify-center">
+<!-- Simulated Legacy UI Screenshot -->
+<div class="w-full max-w-lg bg-[#ece9d8] border-2 border-slate-600 rounded-sm shadow-xl p-1 relative font-[Tahoma,sans-serif] text-black">
+<!-- Window Title Bar -->
+<div class="bg-gradient-to-r from-[#0a246a] to-[#a6caf0] px-2 py-1 flex items-center justify-between">
+<span class="text-white font-bold text-xs">Northstar Core - Security Validation</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-[#c0c0c0] border border-gray-500 shadow-sm"></div>
+<div class="w-3 h-3 bg-[#c0c0c0] border border-gray-500 shadow-sm"></div>
+<div class="w-3 h-3 bg-[#c0c0c0] border border-gray-500 shadow-sm flex items-center justify-center"><span class="text-[8px] font-bold">X</span></div>
+</div>
+</div>
+<!-- Window Content -->
+<div class="bg-[#ece9d8] p-4 text-sm flex flex-col items-center border border-gray-300 mt-1">
+<div class="w-12 h-12 mb-4 bg-yellow-100 border border-yellow-400 rounded-full flex items-center justify-center text-yellow-600">
+<span class="material-symbols-outlined !text-3xl">lock</span>
+</div>
+<h4 class="font-bold mb-2">Two-Factor Authentication Required</h4>
+<p class="text-center text-gray-700 text-xs mb-4">An SMS code has been sent to the member's registered mobile device ending in <strong>4922</strong>.</p>
+<div class="w-full flex justify-center mb-6">
+<input class="w-32 text-center border-2 inset-shadow-sm border-gray-400 p-1 tracking-widest font-mono text-lg" placeholder="--- ---" type="text" value=""/>
+</div>
+<div class="flex gap-2 w-full justify-end border-t border-gray-300 pt-3">
+<button class="bg-[#f0f0f0] border-2 border-gray-400 border-t-white border-l-white px-4 py-1 text-xs hover:bg-[#e0e0e0] active:border-b-white active:border-r-white active:border-t-gray-500 active:border-l-gray-500">Cancel</button>
+<button class="bg-[#f0f0f0] border-2 border-gray-400 border-t-white border-l-white px-4 py-1 text-xs font-bold hover:bg-[#e0e0e0] active:border-b-white active:border-r-white active:border-t-gray-500 active:border-l-gray-500">Verify</button>
+</div>
+</div>
+</div>
+<!-- Overlay Indicator -->
+<div class="absolute inset-0 border-4 border-indigo-500/30 pointer-events-none rounded-sm"></div>
+<div class="absolute top-4 right-4 bg-indigo-900/80 backdrop-blur border border-indigo-500 text-indigo-300 px-3 py-1 text-xs font-mono rounded-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                            AWAITING OPERATOR INPUT
+                        </div>
+</div>
+</section>
+</div>
+<!-- Final Result Panel (Hidden by default, shown here for structural representation of the prompt request) -->
+<div class="mt-8 border border-emerald-900/50 bg-emerald-900/10 rounded-DEFAULT p-6 relative overflow-hidden hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-8xl text-emerald-500">check_circle</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-emerald-400 mb-4 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined">check_circle</span>
+                    RUN SUCCESSFUL
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+<div class="bg-surface p-4 rounded-sm border border-[rgba(255,255,255,0.05)]">
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">SAVINGS BALANCE</p>
+<p class="font-code-table text-xl text-on-surface">$5,125.75</p>
+</div>
+<div class="bg-surface p-4 rounded-sm border border-[rgba(255,255,255,0.05)]">
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">BROWSER SESSION</p>
+<p class="font-code-table text-on-surface">PRESERVED</p>
+</div>
+<div class="bg-surface p-4 rounded-sm border border-[rgba(255,255,255,0.05)]">
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">LLM CALLS</p>
+<span class="inline-flex items-center justify-center bg-emerald-900/50 text-emerald-400 font-code-table px-2 py-0.5 rounded-sm border border-emerald-700">0</span>
+</div>
+<div class="bg-surface p-4 rounded-sm border border-[rgba(255,255,255,0.05)]">
+<p class="text-on-surface-variant font-label-caps text-label-caps mb-1">EVIDENCE</p>
+<p class="font-code-table text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">videocam</span> RECORDED
+                         </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

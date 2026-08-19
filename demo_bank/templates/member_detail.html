@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Member Record: {{ member_id }} — Northstar Core{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumb">
+  <a href="/">Home</a> &gt; <a href="/members/search">Member Search</a> &gt; <span>Member Detail ({{ member_id }})</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <div class="panel-header">
+    <h2>Member Record Overview</h2>
+    <span class="badge badge-active">{{ member.status }}</span>
+  </div>
+  <div class="panel-body">
+    
+    <!-- Primary Member Info Table -->
+    <table class="kv-table">
+      <tbody>
+        <tr>
+          <th>Member ID</th>
+          <td id="val_member_id"><strong>{{ member_id }}</strong></td>
+          <th>Full Name</th>
+          <td id="val_member_name"><strong>{{ member.name }}</strong></td>
+        </tr>
+        <tr>
+          <th>Branch Office</th>
+          <td>{{ member.branch }}</td>
+          <th>Member Since</th>
+          <td>{{ member.joined_date }}</td>
+        </tr>
+        <tr>
+          <th>Contact Phone</th>
+          <td>{{ member.phone }}</td>
+          <th>Email Address</th>
+          <td>{{ member.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Accounts Portfolio Section with Nested Table -->
+    <h3 style="font-size: 15px; color: #1e3a8a; margin-top: 24px; margin-bottom: 12px;">Account Portfolio Summary</h3>
+    
+    <table class="legacy-table" id="accounts_summary_table">
+      <thead>
+        <tr>
+          <th>Account Type</th>
+          <th>Account Number</th>
+          <th>Status</th>
+          <th>Available Balance</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Checking Account</strong></td>
+          <td>{{ member.accounts.checking.account_number }}</td>
+          <td><span class="badge badge-active">{{ member.accounts.checking.status }}</span></td>
+          <td>${{ "%.2f"|format(member.accounts.checking.balance) }}</td>
+          <td>
+            <button class="btn btn-secondary" style="font-size: 11px; padding: 4px 8px;" disabled>View Checking</button>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>Savings Account</strong></td>
+          <td>{{ member.accounts.savings.account_number }}</td>
+          <td><span class="badge badge-active">{{ member.accounts.savings.status }}</span></td>
+          <td>${{ "%.2f"|format(member.accounts.savings.balance) }}</td>
+          <td>
+            <a href="/members/{{ member_id }}/accounts/savings" class="btn" style="font-size: 11px; padding: 4px 10px;" id="btn_view_savings">View Savings</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Legacy-style Nested Account Detail Container -->
+    <div class="nested-table-container">
+      <table style="width: 100%; font-size: 12px; color: #475569;">
+        <tr>
+          <td style="padding: 4px;"><strong>Hold Status:</strong> No Active Legal or Administrative Holds</td>
+          <td style="padding: 4px;"><strong>Overdraft Protection:</strong> Linked (Savings)</td>
+          <td style="padding: 4px; text-align: right;"><a href="/members/search" style="color: #2b6cb0;">&larr; Return to Member Search</a></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,429 @@
+{
+  "artifact": "artifacts/member_balance_discovered_v1.yaml",
+  "generalization": {
+    "run_number": 1,
+    "run_id": "final_generalization_m77777_1_121396",
+    "scenario": "generalization_m77777",
+    "member_id": "M-77777",
+    "status": "SUCCESS",
+    "outcome_code": "SUCCESS",
+    "duration_seconds": 2.424,
+    "outputs": {
+      "savings_balance": 8910.0
+    },
+    "error": null,
+    "llm_calls": 0,
+    "recovery_attempts": 0
+  },
+  "m10428_runs": 10,
+  "m10428_successful": 10,
+  "m10428_success_rate": 1.0,
+  "m10428_median_duration": 1.3175,
+  "m10428_min_duration": 1.214,
+  "m10428_max_duration": 1.455,
+  "business_member_not_found": [
+    {
+      "run_number": 1,
+      "run_id": "final_business_member_not_found_1_137021",
+      "scenario": "business_member_not_found",
+      "member_id": "M-00000",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "duration_seconds": 1.231,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 2,
+      "run_id": "final_business_member_not_found_2_138253",
+      "scenario": "business_member_not_found",
+      "member_id": "M-00000",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "duration_seconds": 1.135,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 3,
+      "run_id": "final_business_member_not_found_3_139388",
+      "scenario": "business_member_not_found",
+      "member_id": "M-00000",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "duration_seconds": 1.124,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    }
+  ],
+  "business_permission_denied": [
+    {
+      "run_number": 1,
+      "run_id": "final_business_permission_denied_1_140512",
+      "scenario": "business_permission_denied",
+      "member_id": "M-99999",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "PERMISSION_DENIED",
+      "duration_seconds": 1.18,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 2,
+      "run_id": "final_business_permission_denied_2_141691",
+      "scenario": "business_permission_denied",
+      "member_id": "M-99999",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "PERMISSION_DENIED",
+      "duration_seconds": 1.154,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 3,
+      "run_id": "final_business_permission_denied_3_142845",
+      "scenario": "business_permission_denied",
+      "member_id": "M-99999",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "PERMISSION_DENIED",
+      "duration_seconds": 1.148,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    }
+  ],
+  "slow_load": [
+    {
+      "run_number": 1,
+      "run_id": "final_slow_load_m77777_1_143993",
+      "scenario": "slow_load_m77777",
+      "member_id": "M-77777",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 2.226,
+      "outputs": {
+        "savings_balance": 8910.0
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 2,
+      "run_id": "final_slow_load_m77777_2_146219",
+      "scenario": "slow_load_m77777",
+      "member_id": "M-77777",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 2.349,
+      "outputs": {
+        "savings_balance": 8910.0
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 3,
+      "run_id": "final_slow_load_m77777_3_148568",
+      "scenario": "slow_load_m77777",
+      "member_id": "M-77777",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 2.229,
+      "outputs": {
+        "savings_balance": 8910.0
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    }
+  ],
+  "llm_calls_during_replay": 0,
+  "runs": [
+    {
+      "run_number": 1,
+      "run_id": "final_success_m10428_1_123821",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.35,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 2,
+      "run_id": "final_success_m10428_2_125171",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.455,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 3,
+      "run_id": "final_success_m10428_3_126626",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.429,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 4,
+      "run_id": "final_success_m10428_4_128055",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.339,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 5,
+      "run_id": "final_success_m10428_5_129394",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.268,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 6,
+      "run_id": "final_success_m10428_6_130662",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.237,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 7,
+      "run_id": "final_success_m10428_7_131899",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.351,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 8,
+      "run_id": "final_success_m10428_8_133250",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.214,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 9,
+      "run_id": "final_success_m10428_9_134464",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.261,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 10,
+      "run_id": "final_success_m10428_10_135726",
+      "scenario": "success_m10428",
+      "member_id": "M-10428",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 1.296,
+      "outputs": {
+        "savings_balance": 4283.42
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 1,
+      "run_id": "final_business_member_not_found_1_137021",
+      "scenario": "business_member_not_found",
+      "member_id": "M-00000",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "duration_seconds": 1.231,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 2,
+      "run_id": "final_business_member_not_found_2_138253",
+      "scenario": "business_member_not_found",
+      "member_id": "M-00000",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "duration_seconds": 1.135,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 3,
+      "run_id": "final_business_member_not_found_3_139388",
+      "scenario": "business_member_not_found",
+      "member_id": "M-00000",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "MEMBER_NOT_FOUND",
+      "duration_seconds": 1.124,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 1,
+      "run_id": "final_business_permission_denied_1_140512",
+      "scenario": "business_permission_denied",
+      "member_id": "M-99999",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "PERMISSION_DENIED",
+      "duration_seconds": 1.18,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 2,
+      "run_id": "final_business_permission_denied_2_141691",
+      "scenario": "business_permission_denied",
+      "member_id": "M-99999",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "PERMISSION_DENIED",
+      "duration_seconds": 1.154,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 3,
+      "run_id": "final_business_permission_denied_3_142845",
+      "scenario": "business_permission_denied",
+      "member_id": "M-99999",
+      "status": "BUSINESS_OUTCOME",
+      "outcome_code": "PERMISSION_DENIED",
+      "duration_seconds": 1.148,
+      "outputs": {},
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 1,
+      "run_id": "final_slow_load_m77777_1_143993",
+      "scenario": "slow_load_m77777",
+      "member_id": "M-77777",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 2.226,
+      "outputs": {
+        "savings_balance": 8910.0
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 2,
+      "run_id": "final_slow_load_m77777_2_146219",
+      "scenario": "slow_load_m77777",
+      "member_id": "M-77777",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 2.349,
+      "outputs": {
+        "savings_balance": 8910.0
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    },
+    {
+      "run_number": 3,
+      "run_id": "final_slow_load_m77777_3_148568",
+      "scenario": "slow_load_m77777",
+      "member_id": "M-77777",
+      "status": "SUCCESS",
+      "outcome_code": "SUCCESS",
+      "duration_seconds": 2.229,
+      "outputs": {
+        "savings_balance": 8910.0
+      },
+      "error": null,
+      "llm_calls": 0,
+      "recovery_attempts": 0
+    }
+  ]
+}

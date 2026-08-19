@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — Northstar Core{% endblock %}
+
+{% block content %}
+<div class="breadcrumb">
+  <span>Home</span> &gt; <span>Dashboard</span>
+</div>
+
+<div class="panel">
+  <div class="panel-header">
+    <h2>Operations Overview</h2>
+    <span class="badge badge-active">Environment: Production (Branch 104)</span>
+  </div>
+  <div class="panel-body">
+    <p style="margin-bottom: 16px; color: #475569;">
+      Welcome to the Northstar Core Banking Operations Portal. Use the modules below to lookup member records, review account balances, or manage daily exceptions.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
+      <div style="border: 1px solid #cbd5e1; border-radius: 4px; padding: 16px; background: #f8fafc;">
+        <h3 style="font-size: 15px; color: #1e3a8a; margin-bottom: 8px;">Member Services</h3>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">Query member profiles, active checking/savings accounts, and verify standing.</p>
+        <a href="/members/search" class="btn">Member Search</a>
+      </div>
+
+      <div style="border: 1px solid #cbd5e1; border-radius: 4px; padding: 16px; background: #f8fafc;">
+        <h3 style="font-size: 15px; color: #334155; margin-bottom: 8px;">Daily Batch Processing</h3>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">End-of-day settlement status and automated clearinghouse journal entries.</p>
+        <button class="btn btn-secondary" disabled style="opacity: 0.6; cursor: not-allowed;">Batch Locked</button>
+      </div>
+    </div>
+
+    <!-- Legacy-style Nested Operational Status Table -->
+    <h3 style="font-size: 14px; margin-top: 20px; margin-bottom: 8px; color: #334155;">System Subsystem Status</h3>
+    <table class="legacy-table">
+      <thead>
+        <tr>
+          <th>Subsystem</th>
+          <th>Interface ID</th>
+          <th>Status</th>
+          <th>Last Heartbeat</th>
+          <th>Active Sessions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Core Member Ledger</td>
+          <td>IF-MEM-001</td>
+          <td><span class="badge badge-active">Operational</span></td>
+          <td>2026-08-14 18:24:00</td>
+          <td>142</td>
+        </tr>
+        <tr>
+          <td>Savings & Deposits Engine</td>
+          <td>IF-DEP-402</td>
+          <td><span class="badge badge-active">Operational</span></td>
+          <td>2026-08-14 18:24:12</td>
+          <td>89</td>
+        </tr>
+        <tr>
+          <td>Identity & Verification Gate</td>
+          <td>IF-SEC-990</td>
+          <td><span class="badge badge-warning">Review Flagged</span></td>
+          <td>2026-08-14 18:23:50</td>
+          <td>12</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

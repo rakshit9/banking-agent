@@ -1,0 +1,1 @@
+{"timestamp": "2026-08-18T17:08:06.900233+00:00", "run_id": "disc_d9679060", "mode": "discovery", "event": "DISCOVERY_STARTED", "capability_id": null, "step_id": null, "duration_ms": null, "details": {"goal": "M-88888\n", "target_url": "http://127.0.0.1:8000/"}}

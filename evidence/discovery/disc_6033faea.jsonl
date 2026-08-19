@@ -1,0 +1,1 @@
+{"timestamp": "2026-08-18T17:23:40.973246+00:00", "run_id": "disc_6033faea", "mode": "discovery", "event": "DISCOVERY_STARTED", "capability_id": null, "step_id": null, "duration_ms": null, "details": {"goal": "Look up member M-10428 and return their current savings balance with name \n.", "target_url": "http://127.0.0.1:8000/"}}

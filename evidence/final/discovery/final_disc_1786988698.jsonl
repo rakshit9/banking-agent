@@ -1,0 +1,1 @@
+{"timestamp": "2026-08-17T17:44:59.941465+00:00", "run_id": "final_disc_1786988698", "mode": "discovery", "event": "DISCOVERY_STARTED", "capability_id": null, "step_id": null, "duration_ms": null, "details": {"goal": "Look up member M-10428 and return their current savings balance.", "target_url": "http://127.0.0.1:8000/"}}

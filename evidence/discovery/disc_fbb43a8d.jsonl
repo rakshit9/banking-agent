@@ -1,0 +1,1 @@
+{"timestamp": "2026-08-17T20:24:55.568379+00:00", "run_id": "disc_fbb43a8d", "mode": "discovery", "event": "DISCOVERY_STARTED", "capability_id": null, "step_id": null, "duration_ms": null, "details": {"goal": "Find member M-13017 and tell me the current balance in their savings account.\n", "target_url": "http://127.0.0.1:8000/"}}

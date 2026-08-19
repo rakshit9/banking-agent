@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block title %}Savings Account Detail — {{ member_id }} — Northstar Core{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumb">
+  <a href="/">Home</a> &gt; <a href="/members/search">Member Search</a> &gt; <a href="/members/{{ member_id }}">Member Detail ({{ member_id }})</a> &gt; <span>Savings Account</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <div class="panel-header">
+    <h2>Savings Account Detail</h2>
+    <span class="badge badge-active">Status: {{ account.status }}</span>
+  </div>
+  <div class="panel-body">
+    
+    <!-- Account Summary Grid -->
+    <table class="kv-table">
+      <tbody>
+        <tr>
+          <th>Member ID</th>
+          <td id="val_member_id"><strong>{{ member_id }}</strong></td>
+          <th>Member Name</th>
+          <td id="val_member_name"><strong>{{ member.name }}</strong></td>
+        </tr>
+        <tr>
+          <th>Account Type</th>
+          <td id="val_account_type">Primary Savings Account</td>
+          <th>Account Number</th>
+          <td id="val_account_number"><code>{{ account.account_number }}</code></td>
+        </tr>
+        <tr>
+          <th>Account Status</th>
+          <td id="val_account_status"><span class="badge badge-active">{{ account.status }}</span></td>
+          <th>Interest Rate (APY)</th>
+          <td>3.45% APY</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Prominent Balance Box for Extraction -->
+    <div class="balance-highlight-box" id="savings_balance_card">
+      <div class="balance-label">Current Savings Balance</div>
+      <div class="balance-amount" id="current_savings_balance">${{ "%.2f"|format(account.balance) }}</div>
+    </div>
+
+    <!-- Recent Transactions Table (Legacy Ledger Display) -->
+    <h3 style="font-size: 14px; color: #1e3a8a; margin-top: 20px; margin-bottom: 8px;">Recent Posted Transactions</h3>
+    <table class="legacy-table">
+      <thead>
+        <tr>
+          <th>Post Date</th>
+          <th>Description</th>
+          <th>Reference #</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026-08-01</td>
+          <td>Monthly Interest Credit</td>
+          <td>INT-202608-41</td>
+          <td>Credit</td>
+          <td style="color: #15803d;">+$12.30</td>
+          <td>${{ "%.2f"|format(account.balance) }}</td>
+        </tr>
+        <tr>
+          <td>2026-07-28</td>
+          <td>Automatic Payroll Deposit</td>
+          <td>DIR-DEP-9912</td>
+          <td>Credit</td>
+          <td style="color: #15803d;">+$500.00</td>
+          <td>${{ "%.2f"|format(account.balance - 12.30) }}</td>
+        </tr>
+        <tr>
+          <td>2026-07-15</td>
+          <td>Transfer to Checking</td>
+          <td>TRF-881204</td>
+          <td>Debit</td>
+          <td style="color: #b91c1c;">-$200.00</td>
+          <td>${{ "%.2f"|format(account.balance - 512.30) }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 24px;">
+      <a href="/members/{{ member_id }}" class="btn btn-secondary">&larr; Back to Member Profile</a>
+      <a href="/members/search" class="btn btn-secondary" style="margin-left: 8px;">New Search</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

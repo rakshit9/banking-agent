@@ -1,0 +1,471 @@
+{
+  "M-10428": {
+    "scenario": "success",
+    "name": "Alex Morgan",
+    "status": "Active",
+    "joined_date": "2018-03-15",
+    "branch": "Metro Central - Branch 104",
+    "phone": "(555) 234-8901",
+    "email": "a.morgan@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-9812-4011",
+        "balance": 1250.20,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-4402-8819",
+        "balance": 4283.42,
+        "status": "Active"
+      }
+    }
+  },
+  "M-10214": {
+    "scenario": "success",
+    "name": "Sophia Carter",
+    "status": "Active",
+    "joined_date": "2020-01-18",
+    "branch": "River Market - Branch 115",
+    "phone": "(555) 410-2214",
+    "email": "s.carter@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1021-4008",
+        "balance": 1842.63,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1021-7718",
+        "balance": 742.18,
+        "status": "Active"
+      }
+    }
+  },
+  "M-10337": {
+    "scenario": "success",
+    "name": "Ethan Brooks",
+    "status": "Preferred",
+    "joined_date": "2017-09-06",
+    "branch": "Oakridge - Branch 077",
+    "phone": "(555) 410-3337",
+    "email": "e.brooks@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1033-5190",
+        "balance": 2390.15,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1033-1284",
+        "balance": 1284.55,
+        "status": "Active"
+      }
+    }
+  },
+  "M-10551": {
+    "scenario": "success",
+    "name": "Olivia Bennett",
+    "status": "Active",
+    "joined_date": "2022-04-12",
+    "branch": "Harbor Point - Branch 163",
+    "phone": "(555) 410-5551",
+    "email": "o.bennett@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1055-8203",
+        "balance": 675.44,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1055-2917",
+        "balance": 2917.30,
+        "status": "Active"
+      }
+    }
+  },
+  "M-10672": {
+    "scenario": "success",
+    "name": "Noah Richardson",
+    "status": "Active",
+    "joined_date": "2016-12-02",
+    "branch": "Southgate - Branch 221",
+    "phone": "(555) 410-6672",
+    "email": "n.richardson@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1067-4416",
+        "balance": 4021.88,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1067-5640",
+        "balance": 5640.82,
+        "status": "Active"
+      }
+    }
+  },
+  "M-10803": {
+    "scenario": "success",
+    "name": "Ava Mitchell",
+    "status": "Gold",
+    "joined_date": "2015-06-27",
+    "branch": "Lakeview - Branch 090",
+    "phone": "(555) 410-8803",
+    "email": "a.mitchell@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1080-2365",
+        "balance": 512.09,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1080-8215",
+        "balance": 8215.47,
+        "status": "Active"
+      }
+    }
+  },
+  "M-10944": {
+    "scenario": "success",
+    "name": "Liam Parker",
+    "status": "Active",
+    "joined_date": "2014-10-15",
+    "branch": "Cedar Grove - Branch 134",
+    "phone": "(555) 410-9944",
+    "email": "l.parker@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1094-7026",
+        "balance": 3198.27,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1094-1248",
+        "balance": 12480.10,
+        "status": "Active"
+      }
+    }
+  },
+  "M-11026": {
+    "scenario": "success",
+    "name": "Mia Collins",
+    "status": "Active",
+    "joined_date": "2023-02-09",
+    "branch": "Maple Crossing - Branch 056",
+    "phone": "(555) 411-1026",
+    "email": "m.collins@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1102-6184",
+        "balance": 940.72,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1102-0934",
+        "balance": 934.61,
+        "status": "Active"
+      }
+    }
+  },
+  "M-11285": {
+    "scenario": "success",
+    "name": "Lucas Turner",
+    "status": "Preferred",
+    "joined_date": "2019-08-21",
+    "branch": "Pinecrest - Branch 182",
+    "phone": "(555) 411-1285",
+    "email": "l.turner@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1128-3074",
+        "balance": 1580.36,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1128-3706",
+        "balance": 3706.25,
+        "status": "Active"
+      }
+    }
+  },
+  "M-11419": {
+    "scenario": "success",
+    "name": "Isabella Reed",
+    "status": "Active",
+    "joined_date": "2018-11-30",
+    "branch": "Downtown East - Branch 009",
+    "phone": "(555) 411-1419",
+    "email": "i.reed@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1141-6602",
+        "balance": 2876.40,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1141-6194",
+        "balance": 6194.73,
+        "status": "Active"
+      }
+    }
+  },
+  "M-11563": {
+    "scenario": "success",
+    "name": "Mason Cooper",
+    "status": "Gold",
+    "joined_date": "2013-05-14",
+    "branch": "University Park - Branch 147",
+    "phone": "(555) 411-1563",
+    "email": "m.cooper@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1156-9208",
+        "balance": 6244.12,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1156-1532",
+        "balance": 15320.44,
+        "status": "Active"
+      }
+    }
+  },
+  "M-11742": {
+    "scenario": "success",
+    "name": "Amelia Foster",
+    "status": "Active",
+    "joined_date": "2021-03-19",
+    "branch": "Mill Creek - Branch 073",
+    "phone": "(555) 411-1742",
+    "email": "a.foster@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1174-5081",
+        "balance": 1225.71,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1174-2105",
+        "balance": 2105.90,
+        "status": "Active"
+      }
+    }
+  },
+  "M-11908": {
+    "scenario": "success",
+    "name": "James Sullivan",
+    "status": "Active",
+    "joined_date": "2016-01-25",
+    "branch": "Summit Ridge - Branch 201",
+    "phone": "(555) 411-1908",
+    "email": "j.sullivan@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1190-7143",
+        "balance": 352.85,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1190-9845",
+        "balance": 9845.12,
+        "status": "Active"
+      }
+    }
+  },
+  "M-12031": {
+    "scenario": "success",
+    "name": "Harper Morgan",
+    "status": "Preferred",
+    "joined_date": "2020-07-08",
+    "branch": "Eastbrook - Branch 118",
+    "phone": "(555) 412-2031",
+    "email": "h.morgan@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1203-4720",
+        "balance": 2168.99,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1203-4912",
+        "balance": 4912.68,
+        "status": "Active"
+      }
+    }
+  },
+  "M-12276": {
+    "scenario": "success",
+    "name": "Benjamin Hayes",
+    "status": "Active",
+    "joined_date": "2017-04-03",
+    "branch": "Prairie Center - Branch 064",
+    "phone": "(555) 412-2276",
+    "email": "b.hayes@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1227-8359",
+        "balance": 4785.31,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1227-7331",
+        "balance": 7331.05,
+        "status": "Active"
+      }
+    }
+  },
+  "M-12405": {
+    "scenario": "success",
+    "name": "Evelyn Ward",
+    "status": "Gold",
+    "joined_date": "2012-09-17",
+    "branch": "Central Plaza - Branch 031",
+    "phone": "(555) 412-2405",
+    "email": "e.ward@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1240-2975",
+        "balance": 7108.66,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1240-1860",
+        "balance": 18604.29,
+        "status": "Active"
+      }
+    }
+  },
+  "M-12648": {
+    "scenario": "success",
+    "name": "Henry Coleman",
+    "status": "Active",
+    "joined_date": "2022-10-11",
+    "branch": "Willow Bend - Branch 196",
+    "phone": "(555) 412-2648",
+    "email": "h.coleman@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1264-6507",
+        "balance": 890.24,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1264-1567",
+        "balance": 1567.43,
+        "status": "Active"
+      }
+    }
+  },
+  "M-12891": {
+    "scenario": "success",
+    "name": "Charlotte Perry",
+    "status": "Preferred",
+    "joined_date": "2015-12-29",
+    "branch": "Northline - Branch 205",
+    "phone": "(555) 412-2891",
+    "email": "c.perry@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1289-1186",
+        "balance": 5340.80,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1289-1129",
+        "balance": 11290.76,
+        "status": "Active"
+      }
+    }
+  },
+  "M-13017": {
+    "scenario": "success",
+    "name": "Daniel Hughes",
+    "status": "Active",
+    "joined_date": "2021-12-05",
+    "branch": "Meadow Park - Branch 088",
+    "phone": "(555) 413-3017",
+    "email": "d.hughes@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1301-7342",
+        "balance": 1874.53,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1301-3148",
+        "balance": 3148.91,
+        "status": "Active"
+      }
+    }
+  },
+  "M-13254": {
+    "scenario": "success",
+    "name": "Grace Simmons",
+    "status": "Active",
+    "joined_date": "2018-02-23",
+    "branch": "Briarwood - Branch 152",
+    "phone": "(555) 413-3254",
+    "email": "g.simmons@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-1325-4906",
+        "balance": 3012.47,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1325-6875",
+        "balance": 6875.34,
+        "status": "Active"
+      }
+    }
+  },
+  "M-00000": {
+    "scenario": "not_found"
+  },
+  "M-99999": {
+    "scenario": "permission_denied"
+  },
+  "M-88888": {
+    "scenario": "manual_verification",
+    "name": "Jordan Lee",
+    "status": "Restricted Review",
+    "joined_date": "2021-11-04",
+    "branch": "West End - Branch 208",
+    "phone": "(555) 781-4412",
+    "email": "j.lee@example.com",
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-7714-3022",
+        "balance": 2100.00,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-3319-9051",
+        "balance": 5125.75,
+        "status": "Active"
+      }
+    }
+  },
+  "M-77777": {
+    "scenario": "slow_load",
+    "name": "Casey Wright",
+    "status": "Active",
+    "joined_date": "2019-07-22",
+    "branch": "North Hills - Branch 042",
+    "phone": "(555) 609-3321",
+    "email": "c.wright@example.com",
+    "delay_seconds": 1.0,
+    "accounts": {
+      "checking": {
+        "account_number": "CHK-6621-1904",
+        "balance": 3400.50,
+        "status": "Active"
+      },
+      "savings": {
+        "account_number": "SAV-1188-7201",
+        "balance": 8910.00,
+        "status": "Active"
+      }
+    }
+  }
+}

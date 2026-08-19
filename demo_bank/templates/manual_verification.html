@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Verification Required — {{ member_id }} — Northstar Core{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumb">
+  <a href="/">Home</a> &gt; <a href="/members/search">Member Search</a> &gt; <span>Manual Verification ({{ member_id }})</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <div class="panel-header">
+    <h2>Identity Verification Gate</h2>
+    <span class="badge badge-warning">Action Required</span>
+  </div>
+  <div class="panel-body">
+    
+    <div class="alert-box alert-warning">
+      <div class="alert-title">Additional Verification Required</div>
+      <p>This member requires manual verification before account information can be displayed.</p>
+      <p style="margin-top: 6px; font-size: 12px;">Secondary review flag active. Please verify customer identity documents and confirm operator authorization before proceeding.</p>
+    </div>
+
+    <table class="kv-table" style="max-width: 550px; margin-bottom: 24px;">
+      <tr>
+        <th>Member ID</th>
+        <td><code>{{ member_id }}</code></td>
+      </tr>
+      <tr>
+        <th>Verification Reason</th>
+        <td>Multi-factor Identity Check / Address Update Flag</td>
+      </tr>
+      <tr>
+        <th>Required Action</th>
+        <td>Operator must confirm manual identity match</td>
+      </tr>
+    </table>
+
+    <form action="/members/{{ member_id }}/verify" method="POST" style="display: inline-block;">
+      <button type="submit" class="btn btn-warning" id="btn_verify_continue">Verify &amp; Continue</button>
+    </form>
+    <a href="/members/search" class="btn btn-secondary" style="margin-left: 10px;">Cancel &amp; Return</a>
+
+  </div>
+</div>
+{% endblock %}

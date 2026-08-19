@@ -1,0 +1,15 @@
+{
+  "run_number": 1,
+  "run_id": "final_generalization_m77777_1_121396",
+  "scenario": "generalization_m77777",
+  "member_id": "M-77777",
+  "status": "SUCCESS",
+  "outcome_code": "SUCCESS",
+  "duration_seconds": 2.424,
+  "outputs": {
+    "savings_balance": 8910.0
+  },
+  "error": null,
+  "llm_calls": 0,
+  "recovery_attempts": 0
+}

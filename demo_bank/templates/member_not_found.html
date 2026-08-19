@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Member Not Found — Northstar Core{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumb">
+  <a href="/">Home</a> &gt; <a href="/members/search">Member Search</a> &gt; <span>Lookup Result</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <div class="panel-header">
+    <h2>Search Result</h2>
+    <span class="badge badge-warning">Record Not Found</span>
+  </div>
+  <div class="panel-body">
+    
+    <div class="alert-box alert-warning">
+      <div class="alert-title">Member Not Found</div>
+      <p>No member found for Member ID <strong>{{ member_id }}</strong>.</p>
+      <p style="margin-top: 6px; font-size: 12px;">No member found for the supplied Member ID. Please verify the identifier and try again.</p>
+    </div>
+
+    <table class="kv-table" style="max-width: 500px;">
+      <tr>
+        <th>Query Member ID</th>
+        <td><code>{{ member_id }}</code></td>
+      </tr>
+      <tr>
+        <th>Resolution Code</th>
+        <td>ERR-MEM-404-NOTFOUND</td>
+      </tr>
+    </table>
+
+    <div style="margin-top: 20px;">
+      <a href="/members/search" class="btn">Return to Member Search</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

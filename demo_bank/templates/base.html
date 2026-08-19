@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Northstar Core — Banking Operations Portal{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top Header / App Banner -->
+  <header class="header-top">
+    <div>
+      <div class="brand-title">Northstar Core</div>
+      <div class="brand-subtitle">Banking Operations Portal</div>
+    </div>
+    <div class="session-info">
+      <span class="status-dot"></span>Operator: <strong>J. Miller (#4820)</strong> | Terminal: <strong>TERM-08B</strong> | System: <strong>ONLINE</strong>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <a href="/" class="nav-link {% if active_page == 'dashboard' %}active{% endif %}">Dashboard</a>
+    <a href="/members/search" class="nav-link {% if active_page == 'search' %}active{% endif %}">Member Search</a>
+    <a href="#" class="nav-link" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Batch Operations</a>
+    <a href="#" class="nav-link" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Compliance Audit</a>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+    {% block breadcrumbs %}{% endblock %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    Northstar Core Banking System v4.18.2 — Internal Operational Use Only — Fictional Simulator
+  </footer>
+
+</body>
+</html>

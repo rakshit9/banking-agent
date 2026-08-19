@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Capability Inspector - member.get_savings_balance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#171f33",
+                    "surface-dim": "#0b1326",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-variant": "#2d3449",
+                    "on-primary-fixed": "#07006c",
+                    "on-tertiary-container": "#452000",
+                    "secondary-container": "#0566d9",
+                    "background": "#0b1326",
+                    "primary": "#c0c1ff",
+                    "outline-variant": "#464554",
+                    "on-background": "#dae2fd",
+                    "on-surface": "#dae2fd",
+                    "secondary": "#adc6ff",
+                    "inverse-on-surface": "#283044",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "on-surface-variant": "#c7c4d7",
+                    "inverse-primary": "#494bd6",
+                    "outline": "#908fa0",
+                    "on-secondary-fixed": "#001a42",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#e6ecff",
+                    "on-primary": "#1000a9",
+                    "surface": "#0b1326",
+                    "primary-fixed": "#e1e0ff",
+                    "surface-tint": "#c0c1ff",
+                    "surface-container-high": "#222a3d",
+                    "tertiary": "#ffb783",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "surface-bright": "#31394d",
+                    "surface-container-highest": "#2d3449",
+                    "surface-container-lowest": "#060e20",
+                    "on-tertiary-fixed": "#301400",
+                    "inverse-surface": "#dae2fd",
+                    "tertiary-fixed": "#ffdcc5",
+                    "primary-container": "#8083ff",
+                    "on-tertiary": "#4f2500",
+                    "on-error": "#690005",
+                    "on-primary-container": "#0d0096",
+                    "surface-container-low": "#131b2e",
+                    "tertiary-container": "#d97721",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "on-secondary": "#002e6a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "element-gap": "12px",
+                    "table-row-height": "40px",
+                    "sidebar-width": "260px",
+                    "unit": "4px",
+                    "container-padding": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter", "sans-serif"],
+                    "display-lg": ["Inter", "sans-serif"],
+                    "title-sm": ["Inter", "sans-serif"],
+                    "body-sm": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "label-caps": ["Inter", "sans-serif"],
+                    "code-table": ["JetBrains Mono", "monospace"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "title-sm": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "code-table": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .ghost-border { border: 1px solid rgba(255, 255, 255, 0.1); }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 23px; /* Center of the icon roughly */
+            top: 24px;
+            bottom: -24px;
+            width: 2px;
+            background-color: #1e293b; /* Slate-800 equivalent roughly */
+            z-index: 0;
+        }
+        .timeline-item:last-child .timeline-line::before { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="docked full-width top-0 h-table-row-height bg-surface-dim border-b border-outline-variant flat no shadows transition-opacity duration-150 flex justify-between items-center w-full px-container-padding ml-sidebar-width fixed z-50">
+<div class="flex items-center gap-element-gap">
+<span class="font-headline-md text-headline-md font-black text-on-surface tracking-tight">Aegis Operator Console</span>
+</div>
+<div class="flex items-center gap-container-padding">
+<!-- Search Bar on_left structural logic -->
+<div class="relative hidden lg:block w-64">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[16px]">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded pl-8 pr-3 py-1 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Search resources..." type="text"/>
+</div>
+<div class="flex items-center gap-element-gap">
+<!-- Control Indicators -->
+<div class="flex items-center gap-2 bg-indigo-900/30 border border-indigo-700/50 rounded px-2 py-0.5">
+<span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-indigo-300">SYSTEM-CONTROL</span>
+</div>
+<div class="flex items-center gap-2 bg-slate-800 border border-slate-700 rounded px-2 py-0.5">
+<span class="w-2 h-2 rounded-sm bg-indigo-500"></span>
+<span class="font-label-caps text-label-caps text-slate-300">OPERATOR-REQUIRED</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">dns</span>
+</button>
+<div class="w-6 h-6 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden flex items-center justify-center shrink-0">
+<img alt="Operator Avatar" class="w-full h-full object-cover" data-alt="A highly detailed, professional headshot of a system operator in a dimly lit, high-tech control room environment. Cool blue and slate tones dominate the lighting, casting sharp but subtle shadows. The operator wears a dark, modern uniform. The aesthetic is strictly corporate, functional, and cinematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ12ROo5m2jVrc7gwzhShurVi9IYNm0JQgWSrTIK-m9K_mMUvntRVznC3dFRQDtS6gDK6QnkW-6Mo_LEK3uQQQcxT_uq_aVvq419_xmw3hdM5u_rHiYnh5upnMDzPVXJEQsIjMR__8gWrtFGroIcs9kIg_4-e7itR9qYFuNg9p_e9lfRKkJhB9lAmR811OlAgn9nuu_ewFTyu9jbw7RyJ1BknWZAolw7_n7ivp_xE1sMyh_4OSNw0KAg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="bg-surface-dim font-body-md text-body-md w-sidebar-width h-full fixed left-0 top-0 bg-surface-container border-r border-outline-variant flat no shadows transition-colors duration-200 ease-in-out flex flex-col h-screen py-container-padding z-40 mt-table-row-height">
+<div class="px-container-padding mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="Operator Profile" class="w-full h-full object-cover" data-alt="A close-up, highly detailed abstract 3D render of a futuristic banking server rack. Glowing neon blue and deep slate colors. Metallic textures, fiber optic cables faintly visible in the dark background. The image evokes a sense of secure, high-speed, enterprise-grade financial technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-r7lHrIrlYJfTRe5U4MkLWOvfu32-V6_CB53MZzvOodj5lUOl7Nx1bMQlrib9iQdwNTVBolzDSuHLt0-4fg0eurQdSige7dU0bDRA07gR83-EydPYYw51tATe1-7PkAtNvOfL1psT19LCR3sZlSgp-tSunTl4TNtaxM6jW-FH5rnqi4R7PVCTEvjQg_uBomBc7JzVLCgn4lzKcdbjI97Bqmw-N7pDu7gHTnWllnQn3dPmNYSpUwMN6g"/>
+</div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface truncate">Banking AI Admin</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">System Operator</div>
+</div>
+</div>
+</div>
+<div class="px-container-padding mb-6">
+<button class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-body-sm font-bold py-2 px-4 rounded transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Discovery Run
+            </button>
+</div>
+<nav class="flex-1 overflow-y-auto px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">science</span>
+<span>Discovery Studio</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2 rounded text-primary border-r-2 border-primary bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">settings_input_component</span>
+<span class="font-medium">Capabilities</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span>Runs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">pan_tool</span>
+<span>Interventions</span>
+</a>
+</nav>
+<div class="mt-auto px-4 flex flex-col gap-1 pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-sidebar-width mt-table-row-height p-container-padding bg-background min-h-[calc(100vh-40px)]">
+<!-- Header Section -->
+<div class="mb-8 flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="font-display-lg text-display-lg text-on-surface font-code-table">member.get_savings_balance <span class="text-on-surface-variant text-[20px] font-normal">(v1.0.0)</span></h1>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Deterministic capability for Northstar Core.</p>
+</div>
+<!-- Metadata Panel (Bento style right align) -->
+<div class="flex gap-4">
+<div class="bg-surface-container border border-outline-variant rounded p-3 min-w-[120px]">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">RISK LEVEL</div>
+<div class="font-code-table text-code-table text-emerald-400">READ_ONLY</div>
+</div>
+<div class="bg-emerald-900/20 border border-emerald-700/50 rounded p-3 min-w-[140px] relative overflow-hidden">
+<div class="absolute inset-0 bg-emerald-500/5 animate-pulse"></div>
+<div class="font-label-caps text-label-caps text-emerald-500 mb-1 relative z-10">REPLAY MODE</div>
+<div class="font-code-table text-code-table text-emerald-400 font-bold relative z-10">DETERMINISTIC<br/><span class="text-emerald-500/70 text-[10px]">(Zero LLM)</span></div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded p-3 min-w-[100px]">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1">STATUS</div>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="font-body-sm text-body-sm font-medium">Ready</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Inputs/Outputs & Locator Detail -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Inputs & Outputs Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col">
+<div class="bg-surface-variant px-4 py-3 border-b border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">data_object</span>
+<h2 class="font-title-sm text-title-sm text-on-surface">Data Schema</h2>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<!-- Inputs -->
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">INPUTS</div>
+<div class="bg-surface-dim rounded border border-outline-variant p-3 flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="font-code-table text-code-table text-secondary-fixed-dim">member_id</div>
+<div class="flex gap-1">
+<span class="px-1.5 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant text-[10px] font-code-table border border-outline-variant">string</span>
+<span class="px-1.5 py-0.5 rounded-sm bg-indigo-900/40 text-indigo-300 text-[10px] font-code-table border border-indigo-700/50">Required</span>
+<span class="px-1.5 py-0.5 rounded-sm bg-amber-900/30 text-amber-500 text-[10px] font-code-table border border-amber-700/50">Sensitive</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px bg-outline-variant/50 w-full flex items-center justify-center relative">
+<span class="material-symbols-outlined text-outline-variant text-[16px] absolute bg-surface-container px-1">arrow_downward</span>
+</div>
+<!-- Outputs -->
+<div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">OUTPUTS</div>
+<div class="bg-surface-dim rounded border border-outline-variant p-3 flex flex-col gap-2">
+<div class="flex items-start justify-between">
+<div class="font-code-table text-code-table text-primary">savings_balance</div>
+<div class="flex gap-1">
+<span class="px-1.5 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant text-[10px] font-code-table border border-outline-variant">decimal</span>
+<span class="px-1.5 py-0.5 rounded-sm bg-surface-variant text-on-surface-variant text-[10px] font-code-table border border-outline-variant">USD</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Locator Detail Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col">
+<div class="bg-surface-variant px-4 py-3 border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">my_location</span>
+<h2 class="font-title-sm text-title-sm text-on-surface">Locator Detail <span class="text-on-surface-variant font-normal">(Step 02)</span></h2>
+</div>
+<span class="bg-primary/10 text-primary text-[10px] font-code-table px-2 py-0.5 rounded border border-primary/20">Semantic-first targeting</span>
+</div>
+<div class="p-0">
+<div class="flex flex-col">
+<div class="p-3 border-b border-outline-variant/50 hover:bg-surface-container-high transition-colors">
+<div class="font-label-caps text-label-caps text-emerald-400 mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">done</span> PRIMARY</div>
+<div class="font-code-table text-code-table text-on-surface bg-surface-dim p-2 rounded border border-outline-variant overflow-x-auto whitespace-nowrap">
+<span class="text-indigo-400">role</span>=<span class="text-amber-300">textbox</span> <span class="text-indigo-400">name</span>=<span class="text-amber-300">'Member ID'</span>
+</div>
+</div>
+<div class="p-3 border-b border-outline-variant/50 hover:bg-surface-container-high transition-colors">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">swap_vert</span> FALLBACK 1</div>
+<div class="font-code-table text-code-table text-on-surface-variant bg-surface-dim p-2 rounded border border-outline-variant/50 overflow-x-auto whitespace-nowrap opacity-70">
+<span class="text-indigo-400">label</span>=<span class="text-amber-300">'Member ID'</span>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-high transition-colors">
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">swap_vert</span> FALLBACK 2</div>
+<div class="font-code-table text-code-table text-on-surface-variant bg-surface-dim p-2 rounded border border-outline-variant/50 overflow-x-auto whitespace-nowrap opacity-70">
+<span class="text-pink-400">css</span>=<span class="text-amber-300">input[name="member_id"]</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Workflow Timeline -->
+<div class="lg:col-span-8 bg-surface-container rounded-lg border border-outline-variant overflow-hidden flex flex-col h-full">
+<div class="bg-surface-variant px-4 py-3 border-b border-outline-variant flex items-center justify-between sticky top-0 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">route</span>
+<h2 class="font-title-sm text-title-sm text-on-surface">Execution Workflow</h2>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">7 Sequential Steps</div>
+</div>
+<div class="p-6 overflow-y-auto flex-1 relative">
+<!-- Timeline container -->
+<div class="flex flex-col relative">
+<!-- Step 01 -->
+<div class="timeline-item flex gap-4 relative pb-6">
+<div class="timeline-line relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-dim border-2 border-indigo-500 flex items-center justify-center shrink-0">
+<span class="font-code-table text-code-table text-indigo-400">01</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-dim border border-outline-variant rounded p-4 ghost-border hover:bg-surface-container-high transition-colors mt-1">
+<div class="flex justify-between items-start mb-2">
+<div class="font-title-sm text-title-sm text-on-surface font-semibold">Open Member Search</div>
+<span class="px-2 py-1 rounded bg-indigo-900/30 text-indigo-300 text-[10px] font-label-caps border border-indigo-700/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">navigation</span> Navigation
+                                    </span>
+</div>
+</div>
+</div>
+<!-- Step 02 (Expanded style) -->
+<div class="timeline-item flex gap-4 relative pb-6">
+<div class="timeline-line relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-dim border-2 border-indigo-500 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(99,102,241,0.2)]">
+<span class="font-code-table text-code-table text-indigo-400">02</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-high border-l-2 border-indigo-500 border-t border-r border-b border-outline-variant rounded p-4 shadow-lg mt-1 relative overflow-hidden">
+<div class="absolute right-0 top-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-xl -mr-10 -mt-10 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="font-title-sm text-title-sm text-on-surface font-semibold flex items-center gap-2">
+                                        Enter Member ID
+                                        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+</div>
+<span class="px-2 py-1 rounded bg-blue-900/30 text-blue-300 text-[10px] font-label-caps border border-blue-700/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">keyboard</span> Input
+                                    </span>
+</div>
+<div class="bg-surface-dim rounded p-2 border border-outline-variant font-code-table text-code-table text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-primary">my_location</span>
+<span class="text-indigo-400">role</span>=<span class="text-amber-300">textbox</span> <span class="text-indigo-400">name</span>=<span class="text-amber-300">'Member ID'</span>
+</div>
+</div>
+</div>
+<!-- Step 03 -->
+<div class="timeline-item flex gap-4 relative pb-6">
+<div class="timeline-line relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-dim border-2 border-indigo-500 flex items-center justify-center shrink-0">
+<span class="font-code-table text-code-table text-indigo-400">03</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-dim border border-outline-variant rounded p-4 ghost-border hover:bg-surface-container-high transition-colors mt-1">
+<div class="flex justify-between items-start">
+<div class="font-title-sm text-title-sm text-on-surface font-semibold">Submit Search</div>
+<span class="px-2 py-1 rounded bg-blue-900/30 text-blue-300 text-[10px] font-label-caps border border-blue-700/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">touch_app</span> Action
+                                    </span>
+</div>
+</div>
+</div>
+<!-- Step 04 (Checkpoint / Branching) -->
+<div class="timeline-item flex gap-4 relative pb-6">
+<div class="timeline-line relative z-10">
+<div class="w-12 h-12 rounded bg-surface-dim border-2 border-amber-500 flex items-center justify-center shrink-0 rotate-45 transform origin-center">
+<span class="font-code-table text-code-table text-amber-500 -rotate-45">04</span>
+</div>
+</div>
+<div class="flex-1 mt-1">
+<div class="bg-surface-dim border-l-2 border-amber-500 border-t border-r border-b border-outline-variant rounded p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="font-title-sm text-title-sm text-on-surface font-semibold flex items-center gap-2">
+                                            Validate Member State
+                                        </div>
+<span class="px-2 py-1 rounded bg-amber-900/30 text-amber-500 text-[10px] font-label-caps border border-amber-700/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">fact_check</span> Checkpoint
+                                        </span>
+</div>
+<!-- Branching Logic Sub-component -->
+<div class="mt-3 flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-1.5 h-6 bg-emerald-500 rounded-full shrink-0"></div>
+<div class="flex-1 bg-surface-container border border-outline-variant rounded p-2 flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface">Member Detail visible</span>
+<span class="font-label-caps text-label-caps text-emerald-400">EXPECTED</span>
+</div>
+</div>
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-1.5 h-6 bg-error rounded-full shrink-0"></div>
+<div class="flex-1 bg-surface-container border border-error/30 rounded p-2 flex items-center justify-between border-dashed">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Member Not Found</span>
+<span class="font-label-caps text-label-caps text-error">ALT PATH</span>
+</div>
+</div>
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-1.5 h-6 bg-error rounded-full shrink-0"></div>
+<div class="flex-1 bg-surface-container border border-error/30 rounded p-2 flex items-center justify-between border-dashed">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Access Denied</span>
+<span class="font-label-caps text-label-caps text-error">ALT PATH</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 05 -->
+<div class="timeline-item flex gap-4 relative pb-6">
+<div class="timeline-line relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-dim border-2 border-indigo-500 flex items-center justify-center shrink-0">
+<span class="font-code-table text-code-table text-indigo-400">05</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-dim border border-outline-variant rounded p-4 ghost-border hover:bg-surface-container-high transition-colors mt-1">
+<div class="flex justify-between items-start">
+<div class="font-title-sm text-title-sm text-on-surface font-semibold">Open Savings</div>
+<span class="px-2 py-1 rounded bg-blue-900/30 text-blue-300 text-[10px] font-label-caps border border-blue-700/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">touch_app</span> Action
+                                    </span>
+</div>
+</div>
+</div>
+<!-- Step 06 -->
+<div class="timeline-item flex gap-4 relative pb-6">
+<div class="timeline-line relative z-10">
+<div class="w-12 h-12 rounded bg-surface-dim border-2 border-amber-500 flex items-center justify-center shrink-0 rotate-45 transform origin-center">
+<span class="font-code-table text-code-table text-amber-500 -rotate-45">06</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-dim border border-outline-variant rounded p-4 ghost-border hover:bg-surface-container-high transition-colors mt-1">
+<div class="flex justify-between items-start mb-2">
+<div class="font-title-sm text-title-sm text-on-surface font-semibold">Verify Savings Account</div>
+<span class="px-2 py-1 rounded bg-amber-900/30 text-amber-500 text-[10px] font-label-caps border border-amber-700/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">fact_check</span> Checkpoint
+                                    </span>
+</div>
+<div class="font-code-table text-code-table text-on-surface-variant text-[11px]">
+                                    Requires text: <span class="text-amber-300">'Savings Account Detail'</span>
+</div>
+</div>
+</div>
+<!-- Step 07 (Extraction) -->
+<div class="timeline-item flex gap-4 relative">
+<div class="timeline-line relative z-10">
+<div class="w-12 h-12 rounded-full bg-emerald-900/40 border-2 border-emerald-500 flex items-center justify-center shrink-0">
+<span class="font-code-table text-code-table text-emerald-400">07</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-dim border-l-2 border-emerald-500 border-t border-r border-b border-outline-variant rounded p-4 ghost-border mt-1">
+<div class="flex justify-between items-start mb-2">
+<div class="font-title-sm text-title-sm text-emerald-100 font-semibold flex items-center gap-2">
+                                        Extract Balance
+                                        <span class="material-symbols-outlined text-emerald-400 text-[16px]">download</span>
+</div>
+<span class="px-2 py-1 rounded bg-emerald-900/30 text-emerald-400 text-[10px] font-label-caps border border-emerald-700/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">save_as</span> Extraction
+                                    </span>
+</div>
+<div class="font-code-table text-code-table text-on-surface-variant flex items-center gap-2">
+                                    Maps to output: <span class="text-primary bg-primary/10 px-1.5 py-0.5 rounded border border-primary/20">savings_balance</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,16 @@
+{
+  "run_id": "final_disc_1786988731",
+  "goal": "Look up member M-10428 and return their current savings balance.",
+  "model": "gpt-4o",
+  "target_url": "http://127.0.0.1:8000/",
+  "evidence_dir": "evidence\\final\\discovery",
+  "duration_seconds": 4.214,
+  "status": "EXECUTION_FAILED",
+  "error": "Action execution failed: Ambiguous locator: 2 elements matched strategy 'attribute([href='/members/search'])'.",
+  "outputs": {},
+  "call_count": 1,
+  "saved_artifact_path": null,
+  "critic_review": null,
+  "steps": 0,
+  "trace_length": 0
+}

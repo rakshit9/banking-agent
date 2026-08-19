@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Member Search — Northstar Core{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumb">
+  <a href="/">Home</a> &gt; <span>Member Search</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <div class="panel-header">
+    <h2>Member Search</h2>
+  </div>
+  <div class="panel-body">
+    <p style="margin-bottom: 18px; color: #475569;">
+      Enter the primary Member ID to retrieve member profiles and account summary balances.
+    </p>
+
+    <!-- Member Search Form -->
+    <form action="/members/search" method="POST" style="margin-bottom: 24px;">
+      <div class="form-group">
+        <label for="member_id" class="form-label">Member ID</label>
+        <input 
+          type="text" 
+          id="member_id" 
+          name="member_id" 
+          class="form-control" 
+          placeholder="e.g. M-10428" 
+          required 
+          autocomplete="off"
+        />
+      </div>
+      <button type="submit" class="btn" id="search_button">Search</button>
+    </form>
+
+    <!-- Legacy Operator Guideline Box -->
+    <div style="border-top: 1px solid #e2e8f0; padding-top: 16px;">
+      <h3 style="font-size: 13px; color: #475569; margin-bottom: 8px;">Query Guidelines</h3>
+      <table class="kv-table" style="max-width: 600px;">
+        <tr>
+          <th>Standard Format</th>
+          <td><code>M-XXXXX</code> (5 alphanumeric characters following prefix)</td>
+        </tr>
+        <tr>
+          <th>Authority Level</th>
+          <td>Branch Operator Tier 2 or Compliance Supervisor</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

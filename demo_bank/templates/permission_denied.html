@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Access Denied — Northstar Core{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumb">
+  <a href="/">Home</a> &gt; <a href="/members/search">Member Search</a> &gt; <span>Authorization Failure</span>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="panel">
+  <div class="panel-header">
+    <h2>Access Control Warning</h2>
+    <span class="badge badge-warning" style="background-color: #fee2e2; color: #991b1b; border-color: #fca5a5;">Forbidden</span>
+  </div>
+  <div class="panel-body">
+    
+    <div class="alert-box alert-error">
+      <div class="alert-title">Access Denied</div>
+      <p>You do not have permission to view this member.</p>
+      <p style="margin-top: 6px; font-size: 12px;">This account profile is restricted to supervisory clearance tier 3 or compliance officer review.</p>
+    </div>
+
+    <table class="kv-table" style="max-width: 500px;">
+      <tr>
+        <th>Target Member ID</th>
+        <td><code>{{ member_id }}</code></td>
+      </tr>
+      <tr>
+        <th>Security Policy</th>
+        <td>SEC-AUTH-403-RESTRICTED</td>
+      </tr>
+    </table>
+
+    <div style="margin-top: 20px;">
+      <a href="/members/search" class="btn">Return to Member Search</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

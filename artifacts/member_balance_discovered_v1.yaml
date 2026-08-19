@@ -1,0 +1,141 @@
+schema_version: '1.0'
+capability_id: member.get_savings_balance
+name: Get Member Savings Balance (Discovered)
+version: 1.0.0
+description: AI-discovered workflow for retrieving savings balance
+target_application: Northstar Core
+inputs:
+  member_id:
+    type: string
+    required: true
+    description: Primary member ID
+    sensitive: false
+    validation_pattern: ^M-\d{5}$
+outputs:
+  savings_balance:
+    type: string
+    description: Current savings balance
+    required: true
+    format: currency
+safety:
+  risk_level: LOW
+  read_only: true
+  human_approval_required: false
+known_outcomes:
+- code: MEMBER_NOT_FOUND
+  description: Target member ID does not exist in member registry
+  category: BUSINESS_OUTCOME
+  checkpoint:
+    type: TEXT_VISIBLE
+    expected: Member Not Found
+    outcome_code: MEMBER_NOT_FOUND
+- code: PERMISSION_DENIED
+  description: Operator lacks supervisory clearance to view target member
+  category: BUSINESS_OUTCOME
+  checkpoint:
+    type: TEXT_VISIBLE
+    expected: Access Denied
+    outcome_code: PERMISSION_DENIED
+- code: MANUAL_VERIFICATION
+  description: Member profile is flagged for secondary identity verification
+  category: HUMAN_REQUIRED
+  checkpoint:
+    type: TEXT_VISIBLE
+    expected: Additional Verification Required
+    outcome_code: MANUAL_VERIFICATION
+steps:
+- step_id: navigate_search
+  description: Open search page
+  action:
+    action_type: navigate
+    target_url: http://127.0.0.1:8000/members/search
+  checkpoint:
+    type: URL_CONTAINS
+    expected: /members/search
+  risk_level: LOW
+  optional: false
+- step_id: enter_member_id
+  description: Enter member ID
+  action:
+    action_type: fill
+    locator:
+      role: textbox
+      accessible_name: Member ID
+      label: Member ID
+      stable_attributes:
+        id: member_id
+        name: member_id
+      css: '#member_id'
+    value_from_input: member_id
+  risk_level: LOW
+  optional: false
+- step_id: submit_search
+  description: Click Search
+  action:
+    action_type: click
+    locator:
+      role: button
+      accessible_name: Search
+      text: Search
+      stable_attributes:
+        id: search_button
+      css: '#search_button'
+  checkpoint:
+    type: ONE_OF
+    branches:
+    - type: TEXT_VISIBLE
+      expected: Member Record Overview
+      outcome_code: SUCCESS
+    - type: TEXT_VISIBLE
+      expected: Member Not Found
+      outcome_code: MEMBER_NOT_FOUND
+    - type: TEXT_VISIBLE
+      expected: Access Denied
+      outcome_code: PERMISSION_DENIED
+    - type: TEXT_VISIBLE
+      expected: Additional Verification Required
+      outcome_code: MANUAL_VERIFICATION
+  risk_level: LOW
+  optional: false
+- step_id: open_savings
+  description: Click View Savings
+  action:
+    action_type: click
+    locator:
+      role: link
+      accessible_name: View Savings
+      text: View Savings
+      stable_attributes:
+        id: btn_view_savings
+      css: '#btn_view_savings'
+  checkpoint:
+    type: URL_CONTAINS
+    expected: /accounts/savings
+  risk_level: LOW
+  optional: false
+- step_id: extract_balance
+  description: Extract Current Savings Balance
+  action:
+    action_type: extract
+    locator:
+      text: $
+      stable_attributes:
+        id: current_savings_balance
+      css: '#current_savings_balance'
+    extract_key: savings_balance
+  checkpoint:
+    type: OUTPUT_PRESENT
+    expected: savings_balance
+  risk_level: LOW
+  optional: false
+success_condition:
+  type: OUTPUT_PRESENT
+  expected: savings_balance
+provenance:
+  source: AI_DISCOVERY
+  discovery_run_id: disc_e23c0c6d
+  created_at: '2026-08-18T21:00:10Z'
+  updated_at: '2026-08-18T21:00:12Z'
+  approved_at: '2026-08-18T21:00:12Z'
+  activated_at: '2026-08-18T21:00:12Z'
+  critic_status: APPROVED
